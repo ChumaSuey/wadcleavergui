@@ -11,6 +11,11 @@ def select_wad_file():
     wad_entry.delete(0, tk.END)
     wad_entry.insert(0, wad_file)
 
+def select_folder():
+    folder = filedialog.askdirectory()
+    folder_entry.delete(0, tk.END)
+    folder_entry.insert(0, folder)
+
 def generate_wad_folder():
     wad_file = wad_entry.get()
     folder_name = folder_entry.get()
@@ -24,11 +29,6 @@ def generate_wad_folder():
         result_label.config(text="Carpeta generada con éxito")
     else:
         result_label.config(text="Por favor, selecciona un archivo .wad y proporciona un nombre de carpeta")
-
-#def select_folder():
-#    folder = filedialog.askdirectory()
-#    folder_entry.delete(0, tk.END)
-#    folder_entry.insert(0, folder)
 
 
 window = tk.Tk()
@@ -46,17 +46,20 @@ wad_entry.pack()
 wad_button = tk.Button(window, text="Select file", command=select_wad_file)
 wad_button.pack()
 
-#folder_button = tk.Button(window, text="Select folder", command=select_folder)
-#folder_button.pack()
-
-
-folder_label = tk.Label(window, text="Type the folder name") #Ingresa el nombre de la carpeta:
+folder_label = tk.Label(window, text="Select the folder to save the separated WADs")
 folder_label.pack()
 
 folder_entry = tk.Entry(window, width=50)
 folder_entry.pack()
 
-generate_button = tk.Button(window, text="Generate folder", command=generate_wad_folder) #Generar carpeta
+
+folder_button = tk.Button(window, text="Select directory", command=select_folder)
+folder_button.pack()
+
+message_label = tk.Label(window, text="Reminder: the split WADs will be generated in the location above")
+message_label.pack()
+
+generate_button = tk.Button(window, text="Generate folder", command=generate_wad_folder)
 generate_button.pack()
 
 result_label = tk.Label(window, text="")
@@ -64,12 +67,5 @@ result_label.pack()
 
 window.mainloop()
 
-#button = tk.Button(
-#    text="Click me!",
-#    width=25,
-#    height=5,
-#    bg="blue",
-#    fg="yellow",
-#)
 
 
