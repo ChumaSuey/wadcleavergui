@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import subprocess
 import os
+import ctypes
 from WADCleaver import *
 
 # Function Definitions:
@@ -54,13 +55,16 @@ def generate_wad_folder():
         result_label.config(
             text="Por favor, selecciona un archivo .wad y proporciona un nombre de carpeta")
 
-
+ctypes.windll.shcore.SetProcessDpiAwareness(1)
+scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
 window = tk.Tk()
 intro = tk.Label(
     text="This is intended to be the GUI for the use of WADCleaver")
 window.title("WADCleaver UI")
 intro.pack()
-window.geometry("600x300") #from 500x300 to 600x300 for a bit better resolution
+#window.geometry("600x300") #from 500x300 to 600x300 for a bit better resolution
+window.geometry(f"{int(600 * scaleFactor)}x{int(300 * scaleFactor)}")
+# Suggested by Pixelkiri,  geometry and ctypes for enhanced UI
 
 # Select the wad file:
 wad_label = tk.Label(window, text="Select the wad file")
