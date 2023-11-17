@@ -50,10 +50,10 @@ def generate_wad_folder():
 
         # Aquí puedes agregar la lógica para separar los wads en colores
 
-        result_label.config(text="WARDS generada con éxito")
+        result_label.config(text="WAD files generated successfully")
     else:
         result_label.config(
-            text="Por favor, selecciona un archivo .wad y proporciona un nombre de carpeta")
+            text="Please select a wad file and type the name of the folder")
 
 ctypes.windll.shcore.SetProcessDpiAwareness(1)
 scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
@@ -86,6 +86,11 @@ folder_entry.pack()
 folder_button = tk.Button(
     window, text="Select directory", command=select_folder)
 folder_button.pack()
+
+message_label = tk.Label(
+    window, text="Reminder: the split WADs will be generated in the location above")
+message_label.pack()
+
 #Delimiter added by Nepta
 delim_label = tk.Label(window, text="Delimiter")
 delim_label.pack()
@@ -103,10 +108,6 @@ token_entry = tk.Entry(
 token_entry.pack()
 
 
-
-message_label = tk.Label(
-    window, text="Reminder: the split WADs will be generated in the location above")
-message_label.pack()
 
 generate_button = tk.Button(
     window, text="Generate WAD", command=generate_wad_folder)
