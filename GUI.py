@@ -53,67 +53,64 @@ def generate_wad_folder():
         result_label.config(text="WAD files generated successfully")
     else:
         result_label.config(
-            text="Please select a wad file and type the name of the folder")
+            text="Please select a WAD file and type the name of the folder")
 
 ctypes.windll.shcore.SetProcessDpiAwareness(1)
 scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
 window = tk.Tk()
-intro = tk.Label(
-    text="This is intended to be the GUI for the use of WADCleaver")
 window.title("WADCleaver UI")
-intro.pack()
-#window.geometry("600x300") #from 500x300 to 600x300 for a bit better resolution
-window.geometry(f"{int(600 * scaleFactor)}x{int(300 * scaleFactor)}")
-# Suggested by Pixelkiri,  geometry and ctypes for enhanced UI
+window.geometry(f"{int(650 * scaleFactor)}x{int(200 * scaleFactor)}")
+
+# Intro got cut because i switched to using grid.
+#intro = tk.Label(text="This is intended to be the GUI for the use of WADCleaver")
 
 # Select the wad file:
-wad_label = tk.Label(window, text="Select the wad file")
-wad_label.pack()
+wad_label = tk.Label(window, text="Select the WAD file:")
+wad_label.grid(row=0, column=0)
 
 wad_entry = tk.Entry(window, width=50)
-wad_entry.pack()
+wad_entry.grid(row=0, column=1)
 
 wad_button = tk.Button(window, text="Select file", command=select_wad_file)
-wad_button.pack()
+wad_button.grid(row=0, column=2)
 
 folder_label = tk.Label(
-    window, text="Select the folder to save the separated WADs")
-folder_label.pack()
+    window, text="Select the folder to save the WADs:")
+folder_label.grid(row=1, column=0)
 
 folder_entry = tk.Entry(window, width=50)
-folder_entry.pack()
+folder_entry.grid(row=1, column=1)
 
 folder_button = tk.Button(
     window, text="Select directory", command=select_folder)
-folder_button.pack()
+folder_button.grid(row=1, column=2)
 
 message_label = tk.Label(
     window, text="Reminder: the split WADs will be generated in the location above")
-message_label.pack()
+message_label.grid(row=2, column=0, columnspan=3)
 
-#Delimiter added by Nepta
+# Delimiter added by Nepta
 delim_label = tk.Label(window, text="Delimiter")
-delim_label.pack()
+delim_label.grid(row=3, column=0)
 
 delim_entry = tk.Entry(window, width=50)
-delim_entry.pack()
+delim_entry.grid(row=3, column=1)
 
-#Token added by Nepta
+# Token added by Nepta
 token_label = tk.Label(window, text="Token")
-token_label.pack()
+token_label.grid(row=4, column=0)
+
 vcmd = (window.register(callback))
 token_entry = tk.Entry(
     window, width=50, validate='all', validatecommand=(vcmd, '%P')
 )
-token_entry.pack()
-
-
+token_entry.grid(row=4, column=1)
 
 generate_button = tk.Button(
     window, text="Generate WAD", command=generate_wad_folder)
-generate_button.pack()
+generate_button.grid(row=5, column=0, columnspan=3)
 
 result_label = tk.Label(window, text="")
-result_label.pack()
+result_label.grid(row=6, column=0, columnspan=3)
 
 window.mainloop()
