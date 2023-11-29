@@ -9,10 +9,6 @@ Referencial links:
 - WADCleaver: https://www.slipseer.com/index.php?resources/wadcleaver.268/
 
 
-
-
-
-
 ## How to run it and what does is it require?
 
 As i'm a very graphical and methodical when it comes to tools, i've always been running the script on Pycharm, but an executable was basically made, the options are as follows:
@@ -25,7 +21,8 @@ It's required :
 - Python 3.11 on your computer ( i think from version 3 can work).
 - TKinter (install it from the CMD/Powershell).
 
-"pip install tk" on CMD / Powershell should work.
+"pip install tk" on CMD / Powershell should work. (at least for Windows)
+
 ## Instructions on how to use it the script (GUI).
 
 ![image](https://github.com/ChumaSuey/wadcleavergui/assets/3680154/dc654320-4d00-494d-a0d2-dac67b56ee9e)
@@ -47,7 +44,18 @@ For using these values, just before step 3, put the number in the white field (E
 
 Not much to say as the script is simple, i'd extend on the Delimiter and Token functions but it's a topic within WADCleaver's original code.
 
-[Note about the script]: A Linux executable should be made soon, script should work in Linux for what i know altho i don't have any distro of it installed anywhere, my friend Nepta who uses Linux confirms it works as far as i know.
+[Note from nickster] If you run into the following error using the Linux executable...
+
+    FileNotFoundError: [Errno 2] No such file or directory: 'python'
+
+...you may be able to fix this by running the following command in the terminal; it has to do with how the Python executable is named in Linux:
+
+    sudo apt install python-is-python3
+
+
+[Note about the script]: A Linux executable was made by Nepta, and the note above from Nickster is just a small fix for a nuance... it works on Linux.
+
+[Note about the branch]: There's a branch where i experimented switching from .pack to .grid, i didn't like much the end result, but i left it there, it should work executing the code... but it's a "spinoff" the master branch will be the only one updated and treated in the future.
 
 [Note about future releases]: The script may need some polishing in the placements of the labels, entry fields, and others but the script is fully functional, so using it would be almost the same case, just some different graphics, i'll change the picture if we get to do a major change.
 
@@ -68,8 +76,6 @@ Original Texture maker and artist extraordinare:
 Special thanks for Feedback:
 - 4LT.
 - PixelKiri.
-
-
 
 Tools used:
 - Python
